@@ -9,9 +9,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-            script{
-            mvn -version
-            }
+bat "mvn clean install"
 
             }
         }

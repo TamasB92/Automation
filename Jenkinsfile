@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Compile') {
       steps {
-        sh 'mvn compile'
+        sh ''' cat /etc/os-release
+mvn compile'''
       }
     }
 

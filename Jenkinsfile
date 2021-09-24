@@ -9,7 +9,8 @@ pipeline {
 
     stage('Build with maven') {
       steps {
-        sh '''sdk use java  8.0.302-zulu;
+        sh '''java -version;
+sdk use java  8.0.302-zulu;
 mvn compile clean verify'''
       }
     }

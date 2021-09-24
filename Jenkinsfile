@@ -5,8 +5,7 @@ pipeline {
       parallel {
         stage('Log tool version') {
           steps {
-            sh '''mvn --version
-'''
+            powershell 'mvn --version'
           }
         }
 

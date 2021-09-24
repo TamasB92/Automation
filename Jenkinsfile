@@ -11,9 +11,9 @@ pipeline {
       parallel {
         stage('Build with maven') {
           steps {
-            sh '''java -version;
-sdk use java  8.0.302-zulu;
-mvn compile clean verify'''
+            java -version;
+            sdk use java  8.0.302-zulu;
+            mvn compile clean verify
           }
         }
 

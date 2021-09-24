@@ -10,7 +10,7 @@ pipeline {
         stage('Test') {
             steps {
   bat "java -version"
-  bat "mvn --version"
+  bat "mvn clean install verify"
 
 
             }

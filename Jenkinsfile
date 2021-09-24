@@ -9,7 +9,10 @@ pipeline {
         }
         stage('Test') {
             steps {
-                mvn -version
+            script{
+            mvn -version
+            }
+
             }
         }
         stage('Deploy') {

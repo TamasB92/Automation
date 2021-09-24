@@ -6,23 +6,35 @@ pipeline {
 
   }
   stages {
-    stage('Compile') {
-      steps {
-        sh '''systeminfo 
-cat /etc/os-release
-mvn compile'''
+    stage('Log tool version') {
+      parallel {
+        stage('Log tool version') {
+          steps {
+            sh '''git --version
+java -version
+mvn --version
+'''
+          }
+        }
+
+        stage('check for pom') {
+          steps {
+            fileExists 'pom.xml'
+          }
+        }
+
       }
     }
 
-    stage('Run The test') {
+    stage('Build with maven') {
       steps {
-        sh 'mvn clean verify'
+        sh 'mvn compile clean verify'
       }
     }
 
-    stage('sout something') {
+    stage('Post build') {
       steps {
-        sh 'echo "finish"'
+        writeFile(file: 'status.txt', text: 'hey it works')
       }
     }
 

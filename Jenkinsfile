@@ -8,10 +8,21 @@ pipeline {
     }
 
     stage('Build with maven') {
-      steps {
-        sh '''java -version;
+      parallel {
+        stage('Build with maven') {
+          steps {
+            sh '''java -version;
 sdk use java  8.0.302-zulu;
 mvn compile clean verify'''
+          }
+        }
+
+        stage('ceva') {
+          steps {
+            powershell 'java -version'
+          }
+        }
+
       }
     }
 

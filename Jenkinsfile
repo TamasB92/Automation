@@ -11,7 +11,7 @@ pipeline {
       parallel {
         stage('Build with maven') {
           steps {
-            java -version
+         sh   'java -version'
           }
         }
 

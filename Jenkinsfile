@@ -1,34 +1,21 @@
 pipeline {
-  agent any
-  stages {
-    stage('check for pom') {
-      steps {
-        fileExists 'pom.xml'
-      }
-    }
+    agent any
 
-    stage('Build with maven') {
-      parallel {
-        stage('Build with maven') {
-          steps {
-         sh   'java -version'
-          }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
         }
-
-        stage('ceva') {
-          steps {
-            sh 'java'
-          }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
         }
-
-      }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
     }
-
-    stage('Post build') {
-      steps {
-        writeFile(file: 'status.txt', text: 'hey it works')
-      }
-    }
-
-  }
 }

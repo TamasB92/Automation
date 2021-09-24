@@ -19,7 +19,7 @@ mvn compile clean verify'''
 
         stage('ceva') {
           steps {
-            powershell 'java -version'
+            sh 'java'
           }
         }
 

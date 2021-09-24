@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Compile') {
       steps {
-        sh ''' cat /etc/os-release
+        sh '''systeminfo 
+cat /etc/os-release
 mvn compile'''
       }
     }
